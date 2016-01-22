@@ -267,7 +267,6 @@ class NessusReportItem(object):
         """
         return self._vuln_info_attr
     
-    @property
     def get_vuln_info_by_name(self, info_name):
         """return the value of a property
            :param property_name: The name of the property
