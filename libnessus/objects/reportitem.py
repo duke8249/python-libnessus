@@ -22,8 +22,8 @@ class NessusReportItem(object):
             'protocol',
             'severity'])
 
-        _vuln_info_attr = set(vuln_info.keys())
-        _missing_attr = _minimal_attr.difference(_vuln_info_attr)
+        self._vuln_info_attr = set(vuln_info.keys())
+        _missing_attr = _minimal_attr.difference(self._vuln_info_attr)
 
         if len(_missing_attr) == 0:
             self.__vuln_info = vuln_info
@@ -259,3 +259,21 @@ class NessusReportItem(object):
         :return str
         """
         return self.__vuln_info['solution']
+
+    @property
+    def get_vuln_info_attr(self):
+        """Return a set of keys reprsenting all properties' key
+           :return: set
+        """
+        return self._vuln_info_attr
+    
+    @property
+    def get_vuln_info_by_name(self, info_name):
+        """return the value of a property
+           :param property_name: The name of the property
+           :return: str or None
+        """
+        if info_name in self._vuln_info_attr:
+            return self.__vuln_info.get(info_name)
+        else:
+            return ''
